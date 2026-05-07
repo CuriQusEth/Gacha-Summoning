@@ -1,0 +1,50 @@
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;800&family=Inter:wght@300;400;600&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --color-shrine-bg: #0A0510;
+  --color-shrine-gold: #FFE066;
+  --color-shrine-red: #E63946;
+  --color-shrine-purple: #4A0E4E;
+  --color-mythic: #FF1053;
+  --color-legendary: #FFD700;
+  --color-epic: #A020F0;
+  --color-rare: #00BFFF;
+  --color-common: #C0C0C0;
+
+  --font-serif: "Cinzel", ui-serif, Georgia, serif;
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  
+  --animate-float: float 4s ease-in-out infinite;
+  --animate-glow: glow 2s ease-in-out infinite alternate;
+  --animate-particle: particle 3s linear forwards;
+}
+
+@keyframes float {
+  0% { transform: translateY(0px) rotate(0deg); }
+  50% { transform: translateY(-10px) rotate(1deg); }
+  100% { transform: translateY(0px) rotate(0deg); }
+}
+
+@keyframes glow {
+  from { box-shadow: 0 0 10px -5px var(--color-shrine-gold); }
+  to { box-shadow: 0 0 30px 10px var(--color-shrine-gold); }
+}
+
+@keyframes particle {
+  0% { transform: translateY(0) scale(1); opacity: 1; }
+  100% { transform: translateY(-100px) scale(0); opacity: 0; }
+}
+
+body {
+  background-color: var(--color-shrine-bg);
+  color: white;
+  font-family: var(--font-sans);
+  overflow-x: hidden;
+  touch-action: pan-y; /* optimize for mobile */
+}
+
+/* Hide scrollbar for gallery */
+::-webkit-scrollbar {
+  display: none;
+}

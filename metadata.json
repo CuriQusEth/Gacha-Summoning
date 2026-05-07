@@ -1,0 +1,6 @@
+{
+  "name": "Gacha Summoning Shrine",
+  "description": "An epic gacha summoning game using Wagmi on Base Mainnet where you build out an ancient magical shrine. Supports ERC-8021 and ERC-8004 concepts.",
+  "requestFramePermissions": [],
+  "majorCapabilities": []
+}
