@@ -27,14 +27,42 @@
       "description": "Main agent control API"
     }
   ],
-  "capabilities": [
-    "gacha-summoning",
-    "character-collection",
-    "rarity-management",
-    "multi-summon-automation",
-    "pull-strategy-optimization",
-    "inventory-orchestration",
-    "mcp-command-execution"
+  "skills": [
+    {
+      "id": "gacha-summoning",
+      "name": "Gacha Summoning",
+      "description": "Performs and orchestrates gacha summoning actions."
+    },
+    {
+      "id": "character-collection",
+      "name": "Character Collection",
+      "description": "Manages character collection and gallery."
+    },
+    {
+      "id": "rarity-management",
+      "name": "Rarity Management",
+      "description": "Handles rarity mapping and probability logic."
+    },
+    {
+      "id": "multi-summon-automation",
+      "name": "Multi Summon Automation",
+      "description": "Automates multi-summon mechanics."
+    },
+    {
+      "id": "pull-strategy-optimization",
+      "name": "Pull Strategy Optimization",
+      "description": "Optimizes pull strategy based on rates."
+    },
+    {
+      "id": "inventory-orchestration",
+      "name": "Inventory Orchestration",
+      "description": "Orchestrates unit inventory and logic."
+    },
+    {
+      "id": "mcp-command-execution",
+      "name": "MCP Command Execution",
+      "description": "Executes logic based on MCP commands."
+    }
   ],
   "supportedChains": ["eip155:8453"],
   "active": true,

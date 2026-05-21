@@ -2,30 +2,49 @@
 
 Welcome to **Gacha Summoning Shrine**, a beautiful, addictive gacha game where you play as the mystical Shrine Keeper. Rebuild an ancient shrine, summon powerful legends, and test your luck to collect the rarest entities in the realm.
 
-This game integrates with the Base Mainnet to provide an immersive on-chain experience, while delivering top-tier UI animations and visual effects.
+## Project Overview
+You are the **Shrine Keeper**, managing an ancient mystical shrine. Your objective is to summon powerful heroes, legendary spirits, divine beasts, and gods from other realms. 
 
-## Game Concept
-You are the **Shrine Keeper**. You build and upgrade an ancient mystical shrine.
-Your objective is to summon powerful heroes, legendary spirits, divine beasts, and gods from other realms to add to your collection.
+This game provides top-tier UI animations, visual effects, and a complete on-chain experience integration via Wagmi on the Base Mainnet.
 
-## Core Features
-*   **Epic Summons:** Engage in visually stunning gacha mechanics. Pull for Common, Rare, Epic, Legendary, and Limited-Time Divine Summons.
-*   **Shrine Progression:** Expand your altar to unlock better gacha rates and rarer units.
-*   **Pity System:** Ensures a guaranteed Legendary/Divine unit after 90 summons without one.
-*   **On-Chain Interactions:** Say GM on the Base Mainnet or encode your luckiest pulls into the blockchain permanently via Sign-In with Ethereum (SIWE) and Wagmi.
-*   **ERC-8004 & ERC-8021:** On-chain attribution and framework ready for decentralized autonomous agents that can fight or manage resources.
+## Tech Stack
+- **Framework:** Next.js 14 (App Router) / React
+- **Styling:** Tailwind CSS & Framer Motion
+- **Web3 Integration:** Wagmi, Viem, SIWE (Sign-In with Ethereum)
+- **AI Agent Protocol:** ERC-8004 (Trustless Agents), MCP (Model Context Protocol)
+- **Blockchain:** Base Mainnet
 
-## AI Agent Integration
-The application comes pre-configured with a powerful **ERC-8004** compliant AI Agent, "Gacha Summoning Orchestrator". 
-- Agent endpoint available via `/.well-known/agent-card.json`.
-- Integrates with MCP logic for autonomous Gacha pulling strategies, character collection, and inventory orchestration.
+## AI Orchestrator & Registration Info
+The application is orchestrated by the **Gacha Summoning Orchestrator**, an ERC-8004 compliant AI Agent.
+- **Agent Service Card**: Available at `/.well-known/agent-card.json`. It provides Agent-to-Agent (A2A) communication and Model Context Protocol capabilities.
+- **Skills Listed in Registry**:
+  - Gacha Summoning
+  - Character Collection
+  - Rarity Management
+  - Multi Summon Automation
+  - Pull Strategy Optimization
+  - Inventory Orchestration
+  - MCP Command Execution
 
-## Technical Stack
-- Main Framework: React (built optimally for Vite and deployable anywhere)
-- Styling: Tailwind CSS & Framer Motion
-- Web3: Wagmi, Viem, SIWE
-- AI Agents Supported: ERC-8004 (Trustless Agents), MCP (Model Context Protocol)
-- Chain: Base Mainnet
+## MCP Connection Guide
+Our Model Context Protocol (MCP) endpoint smoothly allows AI tools to interface with the game state using JSON-RPC 2.0.
+- **Endpoint Route:** `/api/mcp`
+- **Supported Methods:** `POST` (for full structured JSON-RPC commands: `initialize`, `tools/list`, `tools/call`, `prompts/list`, `resources/list`) and `GET` (for health checks).
+- **Available Tools (MCP):** `get_race_status`, `start_race`, `get_leaderboard`, `optimize_speed`, `get_track_info` *(Note: These tools are currently stubbed via payload placeholders per project limits)*.
 
-## Setup & Deployment
-Run standard installation commands (e.g. `npm install`), build via `npm run build`, and deploy outputs directly to modern serverless edge architecture hosting services.
+## How to Run Locally
+
+1. **Install Dependencies:**
+   ```bash
+   npm install
+   ```
+
+2. **Setup Environment Variables:**
+   Create a `.env.local` file and add any necessary public configurations (do not store private keys in source control).
+
+3. **Start the Development Server:**
+   ```bash
+   npm run dev
+   ```
+
+4. Open your browser and navigate to `http://localhost:3000`. You can test the MCP endpoint directly through POST requests targeting the `/api/mcp` and `/api/agent` routes.
