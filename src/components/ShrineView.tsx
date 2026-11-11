@@ -53,7 +53,7 @@ export const ShrineView = () => {
                     <NavButton icon={<Home size={24}/>} label="Altar" active={activeTab==='altar'} onClick={()=>setActiveTab('altar')} />
                     <NavButton icon={<Users size={24}/>} label="Gallery" active={activeTab==='gallery'} onClick={()=>setActiveTab('gallery')} />
                     <NavButton icon={<ScrollText size={24}/>} label="Quests" active={activeTab==='quests'} onClick={()=>setActiveTab('quests')} />
-                    <NavButton icon={<Sparkles size={24}/>} label="Base L2" active={activeTab==='onchain'} onClick={()=>setActiveTab('onchain')} />
+                    <NavButton icon={<Sparkles size={24}/>} label="Base Denim" active={activeTab==='onchain'} onClick={()=>setActiveTab('onchain')} />
                 </div>
             )}
         </div>

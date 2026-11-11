@@ -64,6 +64,12 @@
       "description": "Executes logic based on MCP commands."
     }
   ],
+  "network": {
+    "name": "Base Mainnet",
+    "chainId": 8453,
+    "upgrade": "Denim",
+    "blockTime": "200ms"
+  },
   "supportedChains": ["eip155:8453"],
   "active": true,
   "status": "online"

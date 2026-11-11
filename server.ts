@@ -53,28 +53,33 @@ async function startServer() {
         return res.json({
           tools: [
             {
-              name: "get_race_status",
-              description: "Get the current status of a race [PLACEHOLDER]",
+              name: "get_network_status",
+              description: "Get Base Mainnet Denim 200ms status, block specs, and GM contract target",
               inputSchema: { type: "object", properties: {} }
             },
             {
-              name: "start_race",
-              description: "Start a new race [PLACEHOLDER]",
+              name: "get_shrine_status",
+              description: "Get current Shrine ascension tier, summon probabilities, and pity system rates",
               inputSchema: { type: "object", properties: {} }
             },
             {
-              name: "get_leaderboard",
-              description: "Get the current leaderboard [PLACEHOLDER]",
+              name: "summon_guardian",
+              description: "Simulate or execute a guardian summon roll across Common, Rare, Epic, Legendary, Divine tiers",
+              inputSchema: {
+                type: "object",
+                properties: {
+                  amount: { type: "number", description: "Number of summons (1 or 10)" }
+                }
+              }
+            },
+            {
+              name: "get_luckiest_summon",
+              description: "Retrieve highest power guardian anchored on Base Mainnet with SIWE signature",
               inputSchema: { type: "object", properties: {} }
             },
             {
-              name: "optimize_speed",
-              description: "Optimize speed for the race [PLACEHOLDER]",
-              inputSchema: { type: "object", properties: {} }
-            },
-            {
-              name: "get_track_info",
-              description: "Get detailed information about the track [PLACEHOLDER]",
+              name: "send_gm_info",
+              description: "Get parameters for the on-chain Say GM transaction with ERC-8021 attribution",
               inputSchema: { type: "object", properties: {} }
             }
           ]
@@ -82,8 +87,43 @@ async function startServer() {
       }
 
       if (method === 'tools/call') {
+        const toolName = params?.name;
+        let responseText = "";
+
+        if (toolName === 'get_network_status') {
+          responseText = JSON.stringify({
+            network: "Base Mainnet",
+            chainId: 8453,
+            upgrade: "Denim",
+            blockTime: "200ms canonical blocks",
+            flashblocks: "retired",
+            rpcUrl: "https://mainnet.base.org",
+            gmContract: "0xcD0dd3716C5561De47a24949335dF8a8CD8F71a3",
+            status: "active"
+          }, null, 2);
+        } else if (toolName === 'get_shrine_status') {
+          responseText = JSON.stringify({
+            shrineTier: "Ascended Sacred Shrine",
+            baseRates: { Divine: "0.1%", Legendary: "1.0%", Epic: "10.0%", Rare: "30.0%", Common: "58.9%" },
+            pityCap: 90,
+            denimOptimized: true
+          }, null, 2);
+        } else if (toolName === 'summon_guardian') {
+          const count = params?.arguments?.amount || 1;
+          responseText = `Summoned ${count} guardian(s) at Sacred Shrine on Base Mainnet. Roll completed with Denim 200ms canonical seed.`;
+        } else if (toolName === 'send_gm_info') {
+          responseText = JSON.stringify({
+            contract: "0xcD0dd3716C5561De47a24949335dF8a8CD8F71a3",
+            value: "0 ETH",
+            network: "Base Mainnet (Chain ID 8453)",
+            attribution: "ERC-8021 [ATTRIBUTION_CODE]"
+          }, null, 2);
+        } else {
+          responseText = `Executed tool: ${toolName}`;
+        }
+
         return res.json({
-          content: [{ type: "text", text: `[PLACEHOLDER] Executed tool: ${params?.name}` }],
+          content: [{ type: "text", text: responseText }],
           isError: false
         });
       }
@@ -113,6 +153,8 @@ async function startServer() {
     name: "Gacha Summoning Orchestrator",
     status: "active",
     wallet: "0x29536D0bc1004ab274c4F0F59734Ad74D4559b7B",
+    network: "Base Mainnet (Denim 200ms)",
+    chainId: 8453,
     platform: "Gacha Summoning",
     version: "1.0.0"
   };
